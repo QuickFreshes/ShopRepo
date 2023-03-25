@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from "react";
+// import { Layout } from "antd";
+// import SideMenu from "./Components/SideMenu";
+// import AppRoutes from "./Components/AppRoutes";
+import { Amplify } from "aws-amplify";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+// import awsconfig from "./aws-exports";
+// import "@aws-amplify/ui-react/styles.css";
+// const { Sider, Content, Footer } = Layout;
+import { Header } from "./Authentication/Header";
+import { Footer } from "./Authentication/footerAuth";
+import { SignInHeader } from "./Authentication/SignInHeader";
+import { SignInFooter } from "./Authentication/SignInFooter";
+import "./styles.css";
+
+// Amplify.configure(awsconfig);
+import awsExports from "./aws-exports";
+import Main from "./Components/Main";
+import ShopContextProvider from "./contexts/ShopContexts";
+Amplify.configure(awsExports);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShopContextProvider>
+      <Main />
+    </ShopContextProvider>
   );
 }
 
-export default App;
+export default withAuthenticator(App, {
+  components: {
+    Header,
+    SignIn: {
+      Header: SignInHeader,
+      Footer: SignInFooter,
+    },
+    Footer,
+  },
+});
+// export default withAuthenticator(App);
+// export default App;

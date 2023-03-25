@@ -1,0 +1,40 @@
+.orders-container {
+  margin: 20 auto;
+  /* max-width: 800px; */
+}
+
+.orders-table {
+  padding: 10px;
+}
+
+.orders-table td,
+.orders-table th {
+  padding: 8px 16px;
+}
+
+@media (max-width: 576px) {
+  .orders-table th {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+    margin: 10px;
+    /* margin-left: -90px; */
+  }
+}
+
+@media only screen and (max-width: 882px) {
+  .ant-table-cell {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .orders-container {
+    max-width: 90%;
+    margin: 10px;
+  }
+} */
